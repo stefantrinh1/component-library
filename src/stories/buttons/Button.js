@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 /**
  * Primary UI component for user interaction
  */
@@ -9,12 +9,12 @@ export const Button = ({ ...props }) => {
   // const mode = mode ? mode : 'primary'
   // console.log(mode)
 
-  console.log(props)
+  console.log(props);
   return (
     <ButtonContainer
+      {...props}
       // className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
       // style={backgroundColor && { backgroundColor }}
-      {...props}
     >
       {/* {label} */}
     </ButtonContainer>
@@ -22,7 +22,6 @@ export const Button = ({ ...props }) => {
 };
 
 Button.propTypes = {
-
   /**
    * What background color to use
    * 
@@ -30,12 +29,12 @@ Button.propTypes = {
 
    */
 
-  mode: PropTypes.oneOf(['primary', 'secondary', 'dark', 'light', 'clear']),
+  mode: PropTypes.oneOf(["primary", "secondary", "dark", "light", "clear"]),
   backgroundColor: PropTypes.string,
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Button contents
    */
@@ -54,20 +53,20 @@ Button.defaultProps = {
 };
 
 const ButtonContainer = styled.button`
-  /* background-color: ${({mode, theme, ...props})=> {
-    console.log(mode, theme, props)
-      switch (mode) {
-        case 'primary':
-          return theme ? theme?.primary : '#007bff'
-          case 'secondary':
-          return theme ? theme?.primary : '#6c757d!'
-        default:
-          break;
-      }
-    }} */
+  /* background-color: ${({ mode, theme, ...props }) => {
+    console.log(mode, theme, props);
+    switch (mode) {
+      case "primary":
+        return theme ? theme?.primary : "#007bff";
+      case "secondary":
+        return theme ? theme?.primary : "#6c757d!";
+      default:
+        break;
+    }
+  }} */
 
 
-`
+`;
 
 /* 
 .storybook-button {
@@ -101,5 +100,4 @@ const ButtonContainer = styled.button`
   padding: 12px 24px;
 } */
 
-
-export default Button
+export default Button;

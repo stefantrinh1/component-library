@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const ContentBlock1 = (props) => {
+const Card = (props) => {
   const {
     image,
     title,
@@ -9,7 +9,6 @@ const ContentBlock1 = (props) => {
     text,
     buttonName,
     buttonLink,
-    swapPosition,
     backgroundColor,
     textColor,
   } = props;
@@ -19,43 +18,40 @@ const ContentBlock1 = (props) => {
       backgroundColor={backgroundColor}
       textColor={textColor}>
       {image && (
-        <ImageColumn swapPosition={swapPosition}>
+        <ImageContainer>
           <ImageFill />
           <Image src={image} alt="contentpic" />
-        </ImageColumn>
+        </ImageContainer>
       )}
-      <ContentColumn>
+      <Content>
         {title && <Title>{title}</Title>}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
         {text && <Text>{text}</Text>}
         {buttonLink && buttonName && (
           <Link href={buttonLink}>{buttonName}</Link>
         )}
-      </ContentColumn>
+      </Content>
     </Container>
   );
 };
 
-const Container = styled.section`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 480px;
   background-color: ${({ backgroundColor }) =>
     backgroundColor && backgroundColor};
   color: ${({ textColor }) => textColor && textColor};
-  @media (min-width: 767px) {
-    display: flex;
-    flex-direction: row;
-  }
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const ImageColumn = styled.div`
+const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   overflow: hidden;
-  order: ${({ swapPosition }) => swapPosition && "2"};
-  @media (min-width: 767px) {
-    width: 50%;
-  }
 `;
 const ImageFill = styled.div`
   padding-bottom: 100%;
@@ -72,16 +68,14 @@ const Image = styled.img`
   }
 `;
 
-const ContentColumn = styled.div`
-  padding: 1rem 0;
+const Content = styled.div`
+  padding: 1rem;
   box-sizing: border-box;
   @media (min-width: 767px) {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
-    width: 50%;
   }
 `;
 
@@ -97,10 +91,6 @@ const Subtitle = styled.h3`
 
 const Text = styled.p`
   margin: 1rem 0;
-  max-width: 767px;
-  @media (min-width: 767px) {
-    margin: 2rem 0;
-  }
 `;
 
 const Link = styled.a`
@@ -120,18 +110,15 @@ const Link = styled.a`
   }
 `;
 
-export default ContentBlock1;
+export default Card;
 
-ContentBlock1.defaultProps = {
-  image:
-    "https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-  title: "Title",
-  subtitle: "Subtitle",
-  text:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  buttonName: "Button",
-  buttonLink: "/",
-  swapPosition: false,
+Card.defaultProps = {
+  image: "",
+  title: "",
+  subtitle: "",
+  text: "",
+  buttonName: "",
+  buttonLink: "",
   backgroundColor: "",
   textColor: "",
 };
