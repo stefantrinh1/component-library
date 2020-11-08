@@ -1,29 +1,29 @@
-import React, { useContext } from "react";
-import { NavLink, BrowserRouter as Router } from "react-router-dom";
-import LogoImage from "../../Logos/logo";
-import SocialIcons from "../../General/SocialIcons";
-import styled, { ThemeContext } from "styled-components";
+import React, { useContext } from 'react'
+import { NavLink, BrowserRouter as Router } from 'react-router-dom'
+import LogoImage from '../../Logos/logo'
+import SocialIcons from '../../General/SocialIcons/SocialIcons'
+import styled, { ThemeContext } from 'styled-components'
 
 export default function NavMenu({ navOpen, menuBackgroundColor, textColor }) {
   return (
     <Container
-      style={{ left: `${navOpen ? "0px" : "-100vw"}` }}
+      style={{ left: `${navOpen ? '0px' : '-100vw'}` }}
       menuBackgroundColor={menuBackgroundColor}
       textColor={textColor}>
       <Router>
-        <NavLink to="/">
+        <NavLink to='/'>
           <LogoImage />
         </NavLink>
 
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/blog">What's New</NavLink>
-        <NavLink to="/blog">Latest Hot Spots</NavLink>
-        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to='/about'>About</NavLink>
+        <NavLink to='/blog'>What's New</NavLink>
+        <NavLink to='/blog'>Latest Hot Spots</NavLink>
+        <NavLink to='/blog'>Blog</NavLink>
       </Router>
       <SocialIcons />
       <Button>Explore</Button>
     </Container>
-  );
+  )
 }
 
 const Container = styled.ul`
@@ -45,7 +45,7 @@ const Container = styled.ul`
       ? menuBackgroundColor
       : theme.background
       ? theme.background
-      : "white"};
+      : 'white'};
   @media (min-width: 1024px) {
     position: unset;
     flex-direction: row;
@@ -59,7 +59,7 @@ const Container = styled.ul`
   }
   a {
     color: ${({ textColor, theme }) =>
-      textColor ? textColor : theme.text ? theme.text : "black"};
+      textColor ? textColor : theme.text ? theme.text : 'black'};
     text-decoration: none;
     margin: 0.75rem;
     font-size: 1.25rem;
@@ -68,7 +68,7 @@ const Container = styled.ul`
     }
     @media (min-width: 1024px) {
       color: ${({ textColor, theme }) =>
-        textColor ? textColor : theme.text ? theme.text : "black"};
+        textColor ? textColor : theme.text ? theme.text : 'black'};
     }
   }
   svg {
@@ -82,14 +82,14 @@ const Container = styled.ul`
     }
     * {
       fill: ${({ textColor, theme }) =>
-        textColor ? textColor : theme.text ? theme.text : "black"};
+        textColor ? textColor : theme.text ? theme.text : 'black'};
       @media (min-width: 1024px) {
         fill: ${({ textColor, theme }) =>
-          textColor ? textColor : theme.text ? theme.text : "black"};
+          textColor ? textColor : theme.text ? theme.text : 'black'};
       }
     }
   }
-`;
+`
 
 const Button = styled.button`
   display: none;
@@ -109,4 +109,4 @@ const Button = styled.button`
       color: ${({ theme }) => theme.text};
     }
   }
-`;
+`

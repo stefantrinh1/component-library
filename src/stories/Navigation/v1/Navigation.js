@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, BrowserRouter as Router } from "react-router-dom";
-import LogoImage from "../../Logos/logo";
-import styled from "styled-components";
-import Hamburger from "./Hamburger";
-import NavMenu from "./NavMenu";
+import React, { useState, useEffect } from 'react'
+import { NavLink, BrowserRouter as Router } from 'react-router-dom'
+import LogoImage from '../../Logos/logo'
+import styled from 'styled-components'
+import Hamburger from './Hamburger'
+import NavMenu from './NavMenu'
 
 export default function Navigation({
   navbarBackgroundColor,
   menuBackgroundColor,
   textColor,
 }) {
-  const [navOpen, setNavOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false)
 
   const toggleNav = () => {
-    setNavOpen(!navOpen);
-  };
+    setNavOpen(!navOpen)
+  }
 
   return (
     <Nav navbarBackgroundColor={navbarBackgroundColor}>
       <MobileLogoContainer>
         <Router>
-          <NavLink to="/">
+          <NavLink to='/'>
             <LogoImage />
           </NavLink>
         </Router>
@@ -32,7 +32,7 @@ export default function Navigation({
         textColor={textColor}
       />
     </Nav>
-  );
+  )
 }
 
 const Nav = styled.nav`
@@ -44,14 +44,14 @@ const Nav = styled.nav`
   top: 0%;
   height: 75px;
   background-color: ${({ navbarBackgroundColor }) =>
-    navbarBackgroundColor ? navbarBackgroundColor : ""};
+    navbarBackgroundColor ? navbarBackgroundColor : ''};
   @media (min-width: 1024px) {
     position: absolute;
     top: 0;
     left: 0;
     height: unset;
   }
-`;
+`
 
 const MobileLogoContainer = styled.div`
   position: fixed;
@@ -67,4 +67,4 @@ const MobileLogoContainer = styled.div`
   @media (min-width: 1024px) {
     display: none;
   }
-`;
+`
