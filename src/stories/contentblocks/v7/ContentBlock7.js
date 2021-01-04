@@ -21,7 +21,9 @@ const ContentBlock = (props) => {
       {images && (
         <ImageColumn swapPosition={swapPosition}>
           {images.map((image) => (
-            <Image src={image} alt='contentpic' />
+            <ImageBox>
+              <Image src={image} alt='contentpic' />
+            </ImageBox>
           ))}
         </ImageColumn>
       )}
@@ -66,6 +68,10 @@ const ImageColumn = styled.div`
     width: calc(50%);
     margin: 0rem;
   }
+`
+
+const ImageBox = styled.div`
+  width: calc(50% - 0.5rem);
 `
 
 const Image = styled.img`
