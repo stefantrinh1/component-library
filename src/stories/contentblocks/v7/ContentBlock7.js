@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ContentBlock = (props) => {
+const ContentBlock = props => {
   const {
     images,
     title,
@@ -20,7 +20,7 @@ const ContentBlock = (props) => {
       textColor={textColor}>
       {images && (
         <ImageColumn swapPosition={swapPosition}>
-          {images.map((image) => (
+          {images.map(image => (
             <ImageBox>
               <Image src={image} alt='contentpic' />
             </ImageBox>
@@ -71,12 +71,13 @@ const ImageColumn = styled.div`
 `
 
 const ImageBox = styled.div`
-  width: calc(50% - 0.5rem);
+  width: calc(50% - 0.25rem);
+  margin: 0rem 0.5rem;
 `
 
 const Image = styled.img`
-  width: calc(50% - 0.5rem);
   height: 100%;
+  width: 100%;
   object-fit: cover;
   @media (min-width: 767px) {
   }
@@ -96,7 +97,7 @@ const ContentColumn = styled.div`
     justify-content: center;
     width: calc(50% + 3rem);
     margin: ${({ swapPosition }) =>
-      swapPosition ? '0rem 1rem 0rem 0rem' : '0rem 0rem 0rem 1rem'};
+      swapPosition ? '0rem 0.5rem 0rem 0rem' : '0rem 0rem 0rem 0.5rem'};
   }
 `
 
@@ -120,18 +121,18 @@ const Text = styled.p`
 
 const Link = styled.a`
   display: inline-block;
-  background-color: ${(theme) => (theme.primary ? theme.primary : '#2d2d2d')};
-  color: ${(theme) => (theme.background ? theme.background : 'white')};
+  background-color: ${theme => (theme.primary ? theme.primary : '#2d2d2d')};
+  color: ${theme => (theme.background ? theme.background : 'white')};
   width: fit-content;
   border-radius: 500px;
   text-transform: uppercase;
   padding: 1rem 1.5rem;
   text-decoration: none;
   transition: all ease-in-out 0.4s;
-  border: 1px solid ${(theme) => (theme.primary ? theme.primary : '#2d2d2d')};
+  border: 1px solid ${theme => (theme.primary ? theme.primary : '#2d2d2d')};
   &:hover {
     background-color: transparent;
-    color: ${(theme) => (theme.text ? theme.text : 'black')};
+    color: ${theme => (theme.text ? theme.text : 'black')};
   }
 `
 
