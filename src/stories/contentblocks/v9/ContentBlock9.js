@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ContentBlock1 = props => {
+const ContentBlock = props => {
   const {
-    image,
+    images,
     title,
     subtitle,
     text,
@@ -13,19 +13,21 @@ const ContentBlock1 = props => {
     backgroundColor,
     textColor,
   } = props
-
   return (
     <Container
       {...props}
       backgroundColor={backgroundColor}
       textColor={textColor}>
-      {image && (
+      {images && (
         <ImageColumn swapPosition={swapPosition}>
-          <ImageFill />
-          <Image src={image} alt='contentpic' />
+          {images.slice(0, 3).map(image => (
+            <ImageBox>
+              <Image src={image} alt='contentpic' />
+            </ImageBox>
+          ))}
         </ImageColumn>
       )}
-      <ContentColumn>
+      <ContentColumn {...props}>
         {title && <Title>{title}</Title>}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
         {text && <Text>{text}</Text>}
@@ -40,49 +42,81 @@ const ContentBlock1 = props => {
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  background-color: ${({ backgroundColor }) =>
-    backgroundColor && backgroundColor};
   color: ${({ textColor }) => textColor && textColor};
   @media (min-width: 767px) {
     display: flex;
     flex-direction: row;
+    padding-bottom: 3rem;
   }
 `
 
 const ImageColumn = styled.div`
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   width: 100%;
   overflow: hidden;
   order: ${({ swapPosition }) => swapPosition && '2'};
+  margin: ${({ swapPosition }) =>
+    swapPosition ? '1rem 0rem 0rem' : '0 0 1rem'};
+  gap: 0.5rem;
+  div:nth-child(2) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    img {
+      height: 102vw;
+    }
+
+    @media (min-width: 767px) {
+      img {
+        height: 51vw;
+      }
+    }
+  }
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
   @media (min-width: 767px) {
-    width: 50%;
+    width: calc(50vw);
+    margin: 0rem;
   }
 `
-const ImageFill = styled.div`
-  padding-bottom: 100%;
+
+const ImageBox = styled.div`
+  width: calc(100% - 0.25rem);
+  height: 50vw;
+  @media (min-width: 767px) {
+    height: 25vw;
+  }
 `
+
 const Image = styled.img`
-  position: absolute;
-  width: 100%;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
   object-fit: cover;
   @media (min-width: 767px) {
   }
 `
 
 const ContentColumn = styled.div`
-  padding: 1rem 0;
+  padding: 1rem;
   box-sizing: border-box;
+  background-color: ${({ backgroundColor }) => {
+    return backgroundColor && backgroundColor
+  }};
   @media (min-width: 767px) {
+    padding-left: 2rem;
     display: flex;
     flex-grow: 1;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
-    width: 50%;
+    width: calc(50% + 3rem);
+    margin: ${({ swapPosition }) =>
+      swapPosition ? '0rem 0.5rem 0rem 0rem' : '0rem 0rem 0rem 0.5rem'};
   }
 `
 
@@ -121,9 +155,9 @@ const Link = styled.a`
   }
 `
 
-export default ContentBlock1
+export default ContentBlock
 
-ContentBlock1.defaultProps = {
+ContentBlock.defaultProps = {
   image:
     'https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
   title: 'Title',

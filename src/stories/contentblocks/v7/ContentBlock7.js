@@ -71,14 +71,13 @@ const ImageColumn = styled.div`
 `
 
 const ImageBox = styled.div`
-  width: calc(50% - 0.5rem);
-  margin: 0rem 1rem;
+  width: calc(50% - 0.25rem);
+  margin: 0rem 0.5rem;
 `
 
 const Image = styled.img`
-  /* width: calc(50% - 0.5rem); */
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-fit: cover;
   @media (min-width: 767px) {
   }
@@ -98,7 +97,7 @@ const ContentColumn = styled.div`
     justify-content: center;
     width: calc(50% + 3rem);
     margin: ${({ swapPosition }) =>
-      swapPosition ? '0rem 1rem 0rem 0rem' : '0rem 0rem 0rem 1rem'};
+      swapPosition ? '0rem 0.5rem 0rem 0rem' : '0rem 0rem 0rem 0.5rem'};
   }
 `
 

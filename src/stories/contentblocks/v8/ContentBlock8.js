@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ContentBlock1 = props => {
+const ContentBlock8 = props => {
   const {
     image,
     title,
@@ -76,14 +76,15 @@ const Image = styled.img`
 const ContentColumn = styled.div`
   padding: 1rem 0;
   box-sizing: border-box;
-  @media (min-width: 767px) {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    width: 50%;
-  }
+  border: solid 2px black;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  width: 50%;
+  margin: ${({ swapPosition }) =>
+    swapPosition ? '0rem 0rem 0.5rem' : '0rem 0.5rem'};
 `
 
 const Title = styled.h3`
@@ -121,9 +122,9 @@ const Link = styled.a`
   }
 `
 
-export default ContentBlock1
+export default ContentBlock8
 
-ContentBlock1.defaultProps = {
+ContentBlock8.defaultProps = {
   image:
     'https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
   title: 'Title',
