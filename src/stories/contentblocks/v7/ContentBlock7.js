@@ -72,10 +72,12 @@ const ImageColumn = styled.div`
 
 const ImageBox = styled.div`
   width: calc(50% - 0.5rem);
+  margin: 0rem 1rem;
 `
 
 const Image = styled.img`
-  width: calc(50% - 0.5rem);
+  /* width: calc(50% - 0.5rem); */
+  width: 100%;
   height: 100%;
   object-fit: cover;
   @media (min-width: 767px) {
